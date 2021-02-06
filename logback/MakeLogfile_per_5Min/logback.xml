@@ -1,0 +1,9 @@
+<appender name="M_FILE" class="com.....FiveMinAppender">
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+         <fileNamePattern>log/%d{yyyyMMdd, aux}/${serviceName}.%d{yyyyMMddHHmm}.log</fileNamePattern>
+      </rollingPolicy>
+   </appender>
+
+	<logger name="LOGGER" level="DEBUG">
+		<appender-ref ref="M_FILE" />
+	</logger>
