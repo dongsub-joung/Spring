@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController {
     private final MemberService memberService;
     private boolean loginSuccessful= false;
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/api/login")
     public ResponseDto<?> login(@RequestParam String _id
             , @RequestParam String _pw
             , HttpServletResponse httpServletResponse
@@ -34,13 +34,17 @@ public class MemberController {
         }
     }
 
-    @PostMapping(value = "/join")
+    @PostMapping(value = "/api/join")
     public ResponseDto<?> join(@RequestParam String _id
             , @RequestParam String _pw
             , HttpServletResponse httpServletResponse
             , HttpServletRequest httpServletRequest)
     {
         boolean passing= false;
+
+        String hashedPw= memberService.hashing(_pw);
+
+        passing= memberService.joining(_id, hashedPw);
 
         if (passing) {
             // If login is successful, create a response with a success message
@@ -49,7 +53,7 @@ public class MemberController {
                     .data("Login successful")
                     .build();
         } else {
-            return ResponseDto.fail("ERR", "Login fail");
+            return ResponseDto.fail("ERR", "Join fail");
         }
     }
 }

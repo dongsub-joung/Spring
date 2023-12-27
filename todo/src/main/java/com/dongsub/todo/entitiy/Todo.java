@@ -1,10 +1,7 @@
 package com.dongsub.todo.entitiy;
 
+import jakarta.persistence.*;
 import lombok.*;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
 @Entity
 @Builder
@@ -13,13 +10,15 @@ import jakarta.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Todo {
+
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column
-    private String member_id;
+    private String memberId;
 
     @Column
-    private String todo_body;
+    private String todoBody;
 
 }
