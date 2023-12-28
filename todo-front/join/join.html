@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <form id="joinForm" class="join-form">
+      <h2>Join Us</h2>
+      <div class="input-group">
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+      </div>
+      <div class="input-group">
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+      </div>
+      <button type="submit">Join</button>
+    </form>
+    <div id="joinMessage" class="join-message"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
