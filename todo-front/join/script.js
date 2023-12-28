@@ -9,7 +9,9 @@ document.getElementById('joinForm').addEventListener('submit', function(event) {
     if (newUsername.trim() !== '' && newPassword.trim() !== '') {
 
       makePostRequest(newUsername, newPassword);
-      
+
+      // window.location.href = '../todo/todo.html';
+
       document.getElementById('joinMessage').textContent = 'Registration successful!';
       // Perform registration logic here (e.g., store the new credentials)
     } else {
