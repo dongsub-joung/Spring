@@ -21,4 +21,8 @@ public class Todo {
     @Column
     private String todoBody;
 
+    public Todo(String memberId, String txt){
+        this.memberId= memberId;
+        this.todoBody= txt;
+    }
 }

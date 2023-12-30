@@ -18,10 +18,10 @@ public class MemberService {
         Member member = memberRepository.findByMemberId(_id)
                 .orElseThrow(() -> new NullPointerException("Member not found for ID: "));
         System.out.println(member);
-//        String sha256Hash = hash.generateSHA256(_pw.trim());
+        String sha256Hash = hash.generateSHA256(_pw.trim());
 
         _id= _id.trim();
-        if (member.getMemberId().equals(_id) && member.getHashedPw().equals(_pw)){
+        if (member.getMemberId().equals(_id) && member.getHashedPw().equals(sha256Hash)){
             return true;
         }
 

@@ -28,7 +28,7 @@ let todos= loadTodos();
 
 async function saveTodo(todoText){
   try {
-    await fetch("https://todo-api.ngrok.app/api/todo/add", {
+    await fetch("https://localhost:9090/api/todo/add", {
       method: "POST",
       body: JSON.stringify({
         textBody: todoText,
@@ -44,7 +44,7 @@ async function saveTodo(todoText){
 
 async function loadTodos(){
   try {
-    await fetch("https://todo-api.ngrok.app/api/todos", {
+    await fetch("https://localhost:9090/api/todos", {
       method: "POST",
       body: JSON.stringify({
         textBody: todoText,
