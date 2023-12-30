@@ -25,14 +25,10 @@ function addTask() {
 
 let todos= loadTodos();
 
-
-async function saveTodo(todoText){
+async function saveTodo(_id, textBody){
   try {
-    await fetch("https://localhost:9090/api/todo/add", {
+    await fetch(`https://localhost:9090/api/todo/add/${_id}/${textBody}`, {
       method: "POST",
-      body: JSON.stringify({
-        textBody: todoText,
-      }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }

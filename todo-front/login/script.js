@@ -5,31 +5,34 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  let data= makePostRequest(username, password);
-  console.log(data);
-
-  // Perform basic validation (replace this with server-side validation in a real application)
-  if (username === 'username' && password === 'password') {
+  let res= makePostRequest(username, password);
+  console.log(res);
+  if (res.data == "Login_Successful"){
     document.getElementById('loginMessage').textContent = 'Login successful!';
-    // Redirect to another page or perform necessary actions upon successful login
-  } else {
+    window.location.href = '../todo/todo.html';
+  }else{
     document.getElementById('loginMessage').textContent = 'Invalid username or password. Please try again.';
   }
 });
 
-
 async function makePostRequest(userId, userPW) {
+  const url = `https://localhost:9090/api/login/${userId}/${userPW}`;
+
   try {
-    await fetch("https://localhost:9090/api/login", {
+    const response = await fetch(url, {
       method: "POST",
-      body: JSON.stringify({
-        _id: userId,
-        _pw: userPW,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
-    });  
+      // You might need headers or other configurations here
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to make the POST request');
+      // You can handle different HTTP status codes here if needed
+    }
+
+    // Handle the response data if required
+    // const responseData = await response.json();
+    // Do something with the responseData
+
   } catch (error) {
     throw new Error('There was an error with the POST request: ' + error.message);
   }
